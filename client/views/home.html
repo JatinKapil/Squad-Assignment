@@ -1,0 +1,20 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand">Squad App</a>
+    </div>
+</nav>
+<div class="jumbotron text-center">
+    <br />
+    <h2>The Assignment</h2>
+    <p>This app demonstrates the implementation of <br/>
+        <span class="text-danger">Facebook Authentication.</span></p>
+    <br />
+</div>
+<div class="container">
+    <center>
+        <a ng-click="loginWithFacebook()" class="btn btn-primary waves-effect">Login with Facebook</a>
+    </center><br>
+    <div ng-show="error" class="alert alert-danger" id="error">
+        {{error}}
+    </div>
+</div>

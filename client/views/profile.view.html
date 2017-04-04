@@ -1,0 +1,33 @@
+<div class="container">
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="navbar-header">
+			<a class="navbar-brand">Squad App</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li><a ng-click="logout()">Logout</a></li>
+		</ul>
+	</nav>
+	<div class="media">
+		<div class="media-body">
+			<div class="span3 well" id="userInfo">
+				<center>
+					<img ng-src="{{user.picture.data.url}}" alt="Profile Pic not avilable" width="140" height="140" border="0" class="img-circle">
+					<br>
+					<h3 class="media-heading">{{user.name}}</h3>
+					<br>
+				</center>
+			</div>
+			<center>
+				<blockquote>
+					<strong><h4>Bio</strong></h4>
+					<h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</h5>
+
+				</blockquote>
+				<blockquote>
+					<strong><h4>Number of Visits </strong><br /> {{user.count}}
+					</h4>
+				</blockquote>
+			</center>
+		</div>
+	</div>
+</div>
