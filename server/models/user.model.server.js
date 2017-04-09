@@ -29,6 +29,7 @@ module.exports = function() {
     }
 
     function updateUser(id, user) {
+        newCount = user.count + 1;
         return User.findByIdAndUpdate(id, {
             count: newCount
         });

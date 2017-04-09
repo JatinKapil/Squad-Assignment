@@ -13,7 +13,6 @@
                 });
                 FB.AppEvents.logPageView();
                 console.log("done !");
-
             };
 
             (function(d, s, id) {
@@ -82,13 +81,14 @@
         }
 
         function findOrCreateUser(user) {
+            console.log("findOrCreateUser" + user.id);
             var deferred = $q.defer();
             UserService
                 .findUserById(user.id)
                 .then(function(response) {
+                    console.log("findOrCreateUser" + response);
                     var foundUser = response.data;
                     if (foundUser.id) {
-                        console.log("user found " + foundUser.name);
                         deferred.resolve(foundUser);
                     } else {
                         UserService
@@ -96,14 +96,14 @@
                             .then(function(response) {
                                 var newUser = response.data;
                                 if (newUser) {
-                                    console.log("user created " + newUser.name);
                                     deferred.resolve(newUser);
                                 } else {
-                                    console.log("error");
                                     deferred.reject("error while creating user");
                                 }
                             });
                     }
+                }, function(error) {
+                    deferred.reject(error);
                 });
             return deferred.promise;
         }
@@ -113,11 +113,11 @@
             FB.api('/me', 'GET', {
                 fields: 'id,name,picture.width(900).height(900)'
             }, function(response) {
+                console.log("getInfo" + response);
                 if (response.id) deferred.resolve(response);
                 else deferred.reject("error");
             });
             return deferred.promise;
-
         }
 
         function logOut() {
@@ -128,7 +128,6 @@
                 return response;
             });
         }
-
     }
 
 })();

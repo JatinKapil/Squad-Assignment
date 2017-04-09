@@ -16,6 +16,7 @@
         }
 
         function findUserById(id) {
+            console.log("factory");
             var url = "/api/user?userId=" + id;
             return $http.get(url);
         }
@@ -24,8 +25,6 @@
             var url = "/api/user/" + id;
             return $http.delete(url);
         }
-
-
 
     }
 })();

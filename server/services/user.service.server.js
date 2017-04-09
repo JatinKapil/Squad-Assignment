@@ -12,7 +12,6 @@ module.exports = function(app, models) {
         userModel.createUser(newUser)
             .then(
                 function(user) {
-                    console.log(user);
                     res.json(user);
                 },
                 function(error) {
@@ -23,15 +22,18 @@ module.exports = function(app, models) {
 
     function findUserById(req, res) {
         var userId = req.query.userId;
+        console.log("findUserById" + userId);
         userModel.findUserById(userId)
             .then(
                 function(user) {
-                    if (!user) res.send({});
-                    else {
-                        userModel.updateUser(user._id, user).then(function(newUser) {
-                            console.log(newUser.count);
-                            res.send(newUser);
-                        });
+                    if (!user.id) {
+                        res.send({});
+                    } else {
+                        userModel.updateUser(user._id, user)
+                            .then(function(newUser) {
+                                console.log(newUser.count);
+                                res.send(newUser);
+                            });
                     }
                 },
                 function(error) {
@@ -54,7 +56,4 @@ module.exports = function(app, models) {
                 }
             );
     }
-
-
-
 };
